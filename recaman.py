@@ -1,18 +1,13 @@
-
 L = int(input("Length of sequence: "))
 
-sequence = []
-seen = set()
+sequence = [0]
 
-a = 0
-for k in range(L):
-    sequence.append(a)
-    seen.add(a)
-    
-    next_value = a - (k + 1)
-    if next_value > 0 and next_value not in seen:
-        a = next_value
+for k in range(1, L):
+    prev = sequence[k-1]
+    next_value = prev - k
+    if next_value > 0 and next_value not in sequence:
+        sequence.append(next_value)
     else:
-        a = a + (k + 1)
+        sequence.append(prev + k)
 
 [print(item) for item in sequence]
